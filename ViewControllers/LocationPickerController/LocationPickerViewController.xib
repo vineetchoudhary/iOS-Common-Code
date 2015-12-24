@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationPickerViewController">
+            <connections>
+                <outlet property="activityLayerView" destination="jLn-3R-34p" id="nOj-Fb-Z3c"/>
+                <outlet property="buttonUserLocation" destination="iII-Ru-dBG" id="PDc-uG-9zt"/>
+                <outlet property="mapView" destination="X98-uT-Ujc" id="Lun-ns-O1x"/>
+                <outlet property="searchBar" destination="dwX-9T-wAz" id="HXQ-gO-XsZ"/>
+                <outlet property="view" destination="DrI-hR-F0J" id="eOY-SV-bbA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="DrI-hR-F0J">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" placeholder="Search an address" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwX-9T-wAz">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="xV7-7g-ERR"/>
+                    </constraints>
+                    <color key="tintColor" red="0.93725490199999995" green="0.35686274509999999" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch" returnKeyType="search"/>
+                </searchBar>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X98-uT-Ujc">
+                    <rect key="frame" x="0.0" y="40" width="600" height="560"/>
+                </mapView>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iII-Ru-dBG">
+                    <rect key="frame" x="552" y="552" width="28" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="3iu-av-67f"/>
+                        <constraint firstAttribute="width" constant="28" id="OR1-NY-TX2"/>
+                    </constraints>
+                    <state key="normal" image="ic_GPS">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonCurrentLocation:" destination="-1" eventType="touchUpInside" id="QIn-QQ-sA6"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jLn-3R-34p">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gHU-HZ-ap2">
+                            <rect key="frame" x="282" y="281" width="37" height="37"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="gHU-HZ-ap2" secondAttribute="centerX" id="CeX-bM-NR8"/>
+                        <constraint firstAttribute="centerY" secondItem="gHU-HZ-ap2" secondAttribute="centerY" id="HS5-IX-sch"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="jLn-3R-34p" firstAttribute="leading" secondItem="DrI-hR-F0J" secondAttribute="leading" id="13C-vj-iBK"/>
+                <constraint firstItem="dwX-9T-wAz" firstAttribute="top" secondItem="DrI-hR-F0J" secondAttribute="top" id="6hW-mP-ZSc"/>
+                <constraint firstAttribute="trailing" secondItem="iII-Ru-dBG" secondAttribute="trailing" constant="20" id="8tU-th-Ulv"/>
+                <constraint firstAttribute="trailing" secondItem="dwX-9T-wAz" secondAttribute="trailing" id="FQn-4E-Xk4"/>
+                <constraint firstAttribute="trailing" secondItem="X98-uT-Ujc" secondAttribute="trailing" id="GQD-0B-L9a"/>
+                <constraint firstItem="dwX-9T-wAz" firstAttribute="leading" secondItem="DrI-hR-F0J" secondAttribute="leading" id="Lcp-WE-N62"/>
+                <constraint firstAttribute="bottom" secondItem="jLn-3R-34p" secondAttribute="bottom" id="Owz-p5-CGw"/>
+                <constraint firstItem="X98-uT-Ujc" firstAttribute="leading" secondItem="DrI-hR-F0J" secondAttribute="leading" id="PfD-9M-ZKu"/>
+                <constraint firstAttribute="trailing" secondItem="jLn-3R-34p" secondAttribute="trailing" id="cKw-xi-cAQ"/>
+                <constraint firstItem="X98-uT-Ujc" firstAttribute="top" secondItem="DrI-hR-F0J" secondAttribute="top" constant="40" id="gTy-aW-NvR"/>
+                <constraint firstAttribute="bottom" secondItem="iII-Ru-dBG" secondAttribute="bottom" constant="20" id="oFg-iP-RKF"/>
+                <constraint firstItem="jLn-3R-34p" firstAttribute="top" secondItem="DrI-hR-F0J" secondAttribute="top" id="olJ-IE-kaZ"/>
+                <constraint firstAttribute="bottom" secondItem="X98-uT-Ujc" secondAttribute="bottom" id="pyo-6h-mV5"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="548" y="375"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_GPS" width="28" height="28"/>
+    </resources>
+</document>
