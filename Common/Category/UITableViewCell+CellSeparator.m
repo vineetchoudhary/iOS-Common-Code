@@ -1,12 +1,12 @@
 //
-//  UITableViewCell+Cell.m
+//  UITableViewCell+CellSeparator.m
 //
 //  Created by Vineet Choudhary on 09/11/15.
 //  Copyright (c) 2015 Finoit Technologies. All rights reserved.
 //
 
 
-#import "UITableViewCell+Cell.h"
+#import "UITableViewCell+CellSeparator.h"
 
 @implementation UITableViewCell (CellSeparator)
 

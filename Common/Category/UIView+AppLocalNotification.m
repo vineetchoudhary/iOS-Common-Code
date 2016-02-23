@@ -37,8 +37,8 @@
     static UILabel *notificationCountLabel;
     if (notificationCountLabel == nil) {
         notificationCountLabel = [[UILabel alloc] init];
-        [notificationCountLabel setFont:[UIFont appMuseoSans500FontWithSize:11]];
-        [notificationCountLabel setBackgroundColor:[UIColor appEatStatusColor]];
+        [notificationCountLabel setFont:[UIFont systemFontOfSize:11]];
+        [notificationCountLabel setBackgroundColor:[UIColor blackColor]];
         [notificationCountLabel setTextAlignment:NSTextAlignmentCenter];
         
         //register NSManagedObjectContextDidSaveNotification notification to sense any modification MessageData
@@ -54,7 +54,7 @@
 
 -(void)addNotificationCountSubView{
     //get unread message
-    NSInteger unreadMessages = [MessagesData getAllUnReadMessages].count;
+    NSInteger unreadMessages = 0;
     
     //set or update unread message count
     [self.labelNotificationCount setText:[NSString stringWithFormat:@"%@",[NSNumber numberWithInteger:unreadMessages]]];
@@ -104,8 +104,8 @@
     static UILabel *labelNotificationCountOnNavigationBar;
     if (labelNotificationCountOnNavigationBar == nil) {
         labelNotificationCountOnNavigationBar = [[UILabel alloc] init];
-        [labelNotificationCountOnNavigationBar setFont:[UIFont appMuseoSans500FontWithSize:11]];
-        [labelNotificationCountOnNavigationBar setBackgroundColor:[UIColor appEatStatusColor]];
+        [labelNotificationCountOnNavigationBar setFont:[UIFont systemFontOfSize:11]];
+        [labelNotificationCountOnNavigationBar setBackgroundColor:[UIColor blackColor]];
         [labelNotificationCountOnNavigationBar setTextAlignment:NSTextAlignmentCenter];
         
         //register NSManagedObjectContextDidSaveNotification notification to sense any modification MessageData
@@ -120,7 +120,7 @@
 
 -(void)addNotificationCountSubViewOnNavigaionBar{
     //get unread message
-    NSInteger unreadMessages = [MessagesData getAllUnReadMessages].count;
+    NSInteger unreadMessages = 0;
     
     //set or update unread message count
     [self.labelNotificationCountOnNavigationBar setText:[NSString stringWithFormat:@"%@",[NSNumber numberWithInteger:unreadMessages]]];
@@ -179,8 +179,8 @@
 - (void)managedObjectContextChanged:(NSNotification *)notification{
     NSArray *updatedObject = [[notification.userInfo objectForKey:NSUpdatedObjectsKey] allObjects];
     NSArray *insertedObject = [[notification.userInfo objectForKey:NSInsertedObjectsKey] allObjects];
-    if ((updatedObject.count > 0 || insertedObject.count > 0) && ([insertedObject.firstObject isKindOfClass:[MessagesData class]] || [updatedObject.firstObject isKindOfClass:[MessagesData class]])) {
-        NSInteger unreadMessages = [MessagesData getAllUnReadMessages].count;
+    if ((updatedObject.count > 0 || insertedObject.count > 0)) {
+        NSInteger unreadMessages = 0;
         [self.labelNotificationCount setText:[NSString stringWithFormat:@"%@",[NSNumber numberWithInteger:unreadMessages]]];
     }
 }
