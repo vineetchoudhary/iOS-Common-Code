@@ -30,9 +30,7 @@
 #pragma mark - Setup initial view and values
 
 -(void)loadUISettings{
-    if([self respondsToSelector:@selector(edgesForExtendedLayout)]){
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+    [self.navigationController setupNavigationBarWithNavigationItem:self.navigationItem andTitle:self.title andLeftBarItemTyep:LeftBarItemBack andRightBarItemType:RightBarItemNone andRightBarTitle:nil andRightBarImages:nil];
     [barButtonItemBack setImage:[self backButtonImage]];
     [barButtonItemForward setImage:[self forwardButtonImage]];
     [self setBarButtonState];
@@ -73,8 +71,10 @@
 
 -(void)webView:(UIWebView *)webViewLocal didFailLoadWithError:(NSError *)error{
     [self setBarButtonState];
-    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:error.localizedDescription message:nil delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-    [errorAlert show];
+    if (!(([error.domain isEqualToString:NSURLErrorDomain] && error.code == NSURLErrorCancelled) || ([error.domain isEqualToString:@"WebKitErrorDomain"] && error.code == 102))) {
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:error.localizedDescription message:nil delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+        [errorAlert show];
+    }
 }
 
 #pragma mark - Item bar button activity
@@ -84,6 +84,7 @@
     [barButtonItemForward setEnabled: webView.canGoForward];
     [barButtonItemRefresh setEnabled: !webView.isLoading];
     [activityIndicator setHidden: !webView.isLoading];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:webView.isLoading];
 }
 
 #pragma mark - Images

@@ -18,14 +18,16 @@ typedef enum{
     RequestTypeDelete,
 }RequestType;
 
+extern NSString *const NetworkReachablityUpdate;
+
 @interface NetworkHandler : NSObject
 
+@property(nonatomic,assign) BOOL isReachable;
+
++(NetworkHandler *)networkHandler;
+
 +(void)cancelAllRequest;
-
-+(void)checkReachabilityWithSuccess:(void(^)())success andFailed:(void(^)())failed;
-
 +(void)requestWithUrl:(NSString *)url andRequestParameter:(id)parameter andRequestType:(RequestType)requestType andRequiredAuthorization:(BOOL)requiredAuthorization andTag:(NSString *)tag andCompletetion:(void (^)(BOOL status,id responseObj, NSString *tag, NSError *error , NSInteger statusCode))completion;
-
 +(void)responseWithUrl:(NSString *)url andPostResponse:(NSDictionary *)parameters andImageData:(NSData *)imageData andIsImageChanged:(BOOL)isImageChanged andRequestType:(RequestType)requestType andRequiredAuthorization:(BOOL)requiredAuthorization andImageKey:(NSString *)imageKey andCompletetion:(void (^)(BOOL status,id responseObj, NSString *tag, NSError *error , NSInteger statusCode))completion;
 
 @end

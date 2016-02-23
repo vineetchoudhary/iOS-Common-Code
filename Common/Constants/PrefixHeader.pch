@@ -1,0 +1,42 @@
+//
+//  PrefixHeader.pch
+//
+//  Created by Vineet Choudhary
+//  Copyright © Vineet Choudhary. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//Constants
+#import "DebugLog.h"
+#import "GlobalEnums.h"
+#import "GlobalConstant.h"
+
+//Controls
+#import "CircleButton.h"
+#import "DefaultButton.h"
+#import "CircleImageView.h"
+#import "UnderlineTextField.h"
+
+//Network
+#import "NetworkHandler.h"
+
+//Functionality
+
+//Category
+#import "AppDelegate.h"
+#import "NSDate+TimeAgo.h"
+#import "UIFont+AppFonts.h"
+#import "UIColor+AppColor.h"
+#import "UITextView+Placeholder.h"
+#import "NSUserDefaults+AppSetting.h"
+#import "UIAlertController+AppAlert.h"
+#import "UIView+AppLocalNotification.h"
+#import "UITableViewCell+CellSeparator.h"
+#import "UINavigationController+CustomNavigationBar.h"
+
+#endif /* PrefixHeader_pch */
