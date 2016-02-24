@@ -25,14 +25,32 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self checkNavigationController];
+}
+
+#pragma mark - Instancetype
+- (instancetype)initWithNibInDefaultBundle{
+    return [self initWithNibName:NSStringFromClass([WebViewController class]) bundle:nil];
 }
 
 #pragma mark - Setup initial view and values
 
+-(void)checkNavigationController{
+    if (((self.navigationController && self.navigationController.isBeingPresented) || self.isBeingPresented) && !self.navigationItem.rightBarButtonItem) {
+        [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissSelf)]];
+    }else if (self.isMovingToParentViewController && !self.navigationController.isBeingPresented && self.navigationItem.rightBarButtonItem){
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+}
+
+- (void)dismissSelf{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 -(void)loadUISettings{
-    [self.navigationController setupNavigationBarWithNavigationItem:self.navigationItem andTitle:self.title andLeftBarItemTyep:LeftBarItemBack andRightBarItemType:RightBarItemNone andRightBarTitle:nil andRightBarImages:nil];
     [barButtonItemBack setImage:[self backButtonImage]];
     [barButtonItemForward setImage:[self forwardButtonImage]];
+    [toolbarBottom setTranslucent:_translucentToolBar];
     [self setBarButtonState];
     
     if(_tintColor){
@@ -71,9 +89,13 @@
 
 -(void)webView:(UIWebView *)webViewLocal didFailLoadWithError:(NSError *)error{
     [self setBarButtonState];
+    //ignore NSURLErrorCancelled error
     if (!(([error.domain isEqualToString:NSURLErrorDomain] && error.code == NSURLErrorCancelled) || ([error.domain isEqualToString:@"WebKitErrorDomain"] && error.code == 102))) {
-        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:error.localizedDescription message:nil delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-        [errorAlert show];
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:nil message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [errorAlert dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        [self presentViewController:errorAlert animated:YES completion:nil];
     }
 }
 

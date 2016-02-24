@@ -20,6 +20,10 @@
 @property(nonatomic,strong) UIColor *tintColor;
 @property(nonatomic,strong) UIColor *backgroundColor;
 @property(nonatomic,strong) UIColor *webViewBackgroundColor;
+@property(nonatomic,assign) BOOL translucentToolBar;
+
+- (instancetype)initWithNibInDefaultBundle;
+
 - (IBAction)barButtonBackTapped:(UIBarButtonItem *)sender;
 - (IBAction)barButtonForwardTapped:(UIBarButtonItem *)sender;
 - (IBAction)barButtonRefreshTapped:(UIBarButtonItem *)sender;
