@@ -117,8 +117,15 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	hud.removeFromSuperViewOnHide = YES;
     hud.color = [UIColor clearColor];
 	[view addSubview:hud];
-    NSInteger constant = 0;
-    CGRect loaderRect = CGRectMake(hud.indicator.frame.origin.x-constant, hud.indicator.frame.origin.y-constant, 38, 38);
+    //uncoment this line to setup custom hud
+    //[self setupCustomViewWithHUD:hud];
+    [hud addSubview:hud.indicator];;
+	[hud show:animated];
+	return MB_AUTORELEASE(hud);
+}
+
++ (void)setupCustomViewWithHUD:(MBProgressHUD *)hud{
+    CGRect loaderRect = CGRectMake(hud.indicator.frame.origin.x, hud.indicator.frame.origin.y, 38, 38);
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:loaderRect];
     [imageView setAnimationImages:@[[UIImage imageNamed: @"1cl"], [UIImage imageNamed: @"2cl"], [UIImage imageNamed: @"3cl"], [UIImage imageNamed: @"4cl"], [UIImage imageNamed: @"5cl"], [UIImage imageNamed: @"6cl"], [UIImage imageNamed: @"7cl"], [UIImage imageNamed: @"8cl"], [UIImage imageNamed: @"9cl"], [UIImage imageNamed: @"10cl"]]];
     [imageView setAnimationDuration:1];
@@ -126,9 +133,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
     [imageView startAnimating];
     [hud.indicator removeFromSuperview];
     [hud setIndicator:imageView];
-    [hud addSubview:hud.indicator];;
-	[hud show:animated];
-	return MB_AUTORELEASE(hud);
 }
 
 + (BOOL)hideHUDForView:(UIView *)view animated:(BOOL)animated {
