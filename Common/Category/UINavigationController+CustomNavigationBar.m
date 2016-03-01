@@ -8,7 +8,6 @@
 #import "UINavigationController+CustomNavigationBar.h"
 #import <objc/runtime.h>
 #import <SWRevealViewController.h>
-#import "AppDelegate.h"
 
 @implementation UINavigationController (CustomNavigationBar)
 
