@@ -6,7 +6,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AppDelegate.h"
 
 @interface UIAlertController (AppAlert)
 
