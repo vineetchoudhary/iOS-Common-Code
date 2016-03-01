@@ -34,7 +34,7 @@
 +(void)showAlertControllerWithTitle:(NSString *)title andMessage:(NSString *)message{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:ALERT_ERROR_CANCEL_BUTTON_TITLE style:UIAlertActionStyleCancel handler:nil]];
-    [((AppDelegate *)[[UIApplication sharedApplication] delegate]).navigationController showViewController:alertController sender:nil];
+    [((AppDelegate *)[[UIApplication sharedApplication] delegate]).navigationController presentViewController:alertController animated:YES completion:nil];
 }
 
 @end
