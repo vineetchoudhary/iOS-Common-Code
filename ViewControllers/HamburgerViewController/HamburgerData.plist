@@ -7,7 +7,7 @@
 	<key>BottomStaticItem</key>
 	<dict>
 		<key>ItemTitle</key>
-		<string></string>
+		<string>Static Item</string>
 		<key>ItemImage</key>
 		<string></string>
 	</dict>

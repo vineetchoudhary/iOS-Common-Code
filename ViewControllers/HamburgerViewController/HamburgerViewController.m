@@ -25,10 +25,14 @@
     [tableViewHamburgerMenu registerNib:[HamburgerTableViewCell cellNib] forCellReuseIdentifier:[HamburgerTableViewCell cellIdentifer]];
     
     //set table header view
-    if (enableTableViewHeader) [tableViewHamburgerMenu setTableHeaderView:viewTableHeader];
+    if (enableTableViewHeader){
+        [tableViewHamburgerMenu setTableHeaderView:viewTableHeader];
+        [imageViewTableHeaderBottomSepartor setBackgroundColor:[UIColor appTableSeparatorColor]];
+    }
     
     //setupStaticItem
     if (staticItem) {
+        [imageViewBottomSepartor setBackgroundColor:[UIColor appTableSeparatorColor]];
         constraintsStaticBottomOptionHeight.constant = [HamburgerTableViewCell cellHeight];
         [labelStaticItemTitle setText:[staticItem objectForKey:hamburger_menu_item_title]];
         [imageViewStaticItemImage setImage:[UIImage imageNamed:[staticItem objectForKey:hamburger_menu_item_image]]];
@@ -64,6 +68,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HamburgerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[HamburgerTableViewCell cellIdentifer] forIndexPath:indexPath];
     [cell configCellWithMenuItem:[menuItem objectAtIndex:indexPath.row]];
+    [cell addFullBottomSeparatorWithColor:[UIColor appTableSeparatorColor] andLineThickness:1];
     return cell;
 }
 

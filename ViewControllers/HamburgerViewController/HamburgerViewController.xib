@@ -9,7 +9,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HamburgerViewController">
             <connections>
                 <outlet property="constraintsStaticBottomOptionHeight" destination="5qf-bw-Mdg" id="LY9-dk-sey"/>
+                <outlet property="imageViewBottomSepartor" destination="TZ9-Ou-ibC" id="NCB-2n-q8H"/>
                 <outlet property="imageViewStaticItemImage" destination="0u8-Va-U35" id="0Rp-vg-PaW"/>
+                <outlet property="imageViewTableHeaderBottomSepartor" destination="DBG-YU-sed" id="mhb-zK-0yY"/>
                 <outlet property="labelStaticItemTitle" destination="xQ5-dy-F2Y" id="2gv-9b-nWn"/>
                 <outlet property="tableViewHamburgerMenu" destination="hRS-XJ-i3u" id="Qa4-gV-dwl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,9 +23,13 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hRS-XJ-i3u">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hRS-XJ-i3u">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="ktt-lH-THN"/>
+                        <outlet property="delegate" destination="-1" id="01d-6C-X8T"/>
+                    </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WY9-tU-Vuz">
                     <rect key="frame" x="0.0" y="550" width="600" height="50"/>
@@ -40,14 +46,23 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TZ9-Ou-ibC">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="Hou-TE-VEL"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="TZ9-Ou-ibC" secondAttribute="trailing" id="056-Dq-LSR"/>
                         <constraint firstItem="xQ5-dy-F2Y" firstAttribute="leading" secondItem="0u8-Va-U35" secondAttribute="trailing" constant="10" id="4f0-Cq-zOM"/>
                         <constraint firstAttribute="height" constant="50" id="5qf-bw-Mdg"/>
                         <constraint firstItem="0u8-Va-U35" firstAttribute="top" secondItem="WY9-tU-Vuz" secondAttribute="top" constant="5" id="Ffo-GM-YUO"/>
                         <constraint firstAttribute="bottom" secondItem="0u8-Va-U35" secondAttribute="bottom" constant="5" id="JRA-dd-1Ov"/>
+                        <constraint firstItem="TZ9-Ou-ibC" firstAttribute="top" secondItem="WY9-tU-Vuz" secondAttribute="top" id="Urw-07-Gjg"/>
                         <constraint firstItem="xQ5-dy-F2Y" firstAttribute="centerY" secondItem="WY9-tU-Vuz" secondAttribute="centerY" id="b6C-2b-lkj"/>
+                        <constraint firstItem="TZ9-Ou-ibC" firstAttribute="leading" secondItem="WY9-tU-Vuz" secondAttribute="leading" id="eg3-Wq-NIt"/>
                         <constraint firstItem="0u8-Va-U35" firstAttribute="leading" secondItem="WY9-tU-Vuz" secondAttribute="leading" constant="10" id="yDX-6P-8mI"/>
                     </constraints>
                 </view>
@@ -74,9 +89,18 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DBG-YU-sed">
+                    <rect key="frame" x="0.0" y="96" width="600" height="1"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="gvR-1p-kfl"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="DBG-YU-sed" secondAttribute="trailing" id="Qty-Wu-0yQ"/>
+                <constraint firstItem="DBG-YU-sed" firstAttribute="leading" secondItem="jHa-ZL-fGM" secondAttribute="leading" id="U8m-0e-9Hd"/>
+                <constraint firstAttribute="bottom" secondItem="DBG-YU-sed" secondAttribute="bottom" id="dgz-kc-5Hn"/>
                 <constraint firstItem="buU-xy-3Ou" firstAttribute="centerX" secondItem="jHa-ZL-fGM" secondAttribute="centerX" id="kLr-xg-8d3"/>
                 <constraint firstItem="buU-xy-3Ou" firstAttribute="centerY" secondItem="jHa-ZL-fGM" secondAttribute="centerY" id="r93-X3-bdA"/>
             </constraints>

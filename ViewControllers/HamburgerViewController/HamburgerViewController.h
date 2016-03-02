@@ -21,6 +21,8 @@ typedef enum : NSUInteger {
     IBOutlet NSLayoutConstraint *constraintsStaticBottomOptionHeight;
     IBOutlet UILabel *labelStaticItemTitle;
     IBOutlet UIImageView *imageViewStaticItemImage;
+    IBOutlet UIImageView *imageViewBottomSepartor;
+    IBOutlet UIImageView *imageViewTableHeaderBottomSepartor;
 }
 
 @end
