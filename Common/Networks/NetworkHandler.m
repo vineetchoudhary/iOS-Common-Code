@@ -6,8 +6,6 @@
 //
 #import "NetworkHandler.h"
 
-#define SHOW_NETWORK_ERROR 1
-
 NSString * const akAPIBaseURL = @"http://54.201.32.5/pronto/public/api";
 NSString * const akAPIKey = @"secret123";
 NSString * const akRequestAcceptsType = @"application/json";
@@ -35,7 +33,7 @@ NSString * const NetworkReachablityUpdate = @"NetworkReachablityUpdate";
 }
 
 +(void)showNetworkErrorAlertWithError:(NSError *)error{
-    if (SHOW_NETWORK_ERROR) {
+    if ([NetworkHandler networkHandler].showNetworkErrorMessage) {
         [[[UIAlertView alloc] initWithTitle:@"Network Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
     }
 }

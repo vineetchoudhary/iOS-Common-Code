@@ -23,6 +23,7 @@ extern NSString *const NetworkReachablityUpdate;
 @interface NetworkHandler : NSObject
 
 @property(nonatomic,assign) BOOL isReachable;
+@property(nonatomic,assign) BOOL showNetworkErrorMessage;
 
 +(NetworkHandler *)networkHandler;
 
