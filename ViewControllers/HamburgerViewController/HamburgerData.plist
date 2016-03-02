@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnableHeader</key>
+	<false/>
+	<key>BottomStaticItem</key>
+	<dict>
+		<key>ItemTitle</key>
+		<string></string>
+		<key>ItemImage</key>
+		<string></string>
+	</dict>
+	<key>MenuItems</key>
+	<array>
+		<dict>
+			<key>ItemImage</key>
+			<string></string>
+			<key>ItemTitle</key>
+			<string>Item0</string>
+		</dict>
+		<dict>
+			<key>ItemImage</key>
+			<string></string>
+			<key>ItemTitle</key>
+			<string>Item1</string>
+		</dict>
+		<dict>
+			<key>ItemImage</key>
+			<string></string>
+			<key>ItemTitle</key>
+			<string>Item2</string>
+		</dict>
+		<dict>
+			<key>ItemImage</key>
+			<string></string>
+			<key>ItemTitle</key>
+			<string>Item3</string>
+		</dict>
+	</array>
+</dict>
+</plist>
