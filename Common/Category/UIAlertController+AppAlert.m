@@ -7,6 +7,8 @@
 
 #import "UIAlertController+AppAlert.h"
 
+#pragma mark - Alert Style
+
 #define ALERT_ERROR_TITLE @"Error"
 #define ALERT_ERROR_CANCEL_BUTTON_TITLE @"OK"
 #define ALERT_NETWORK_ERROR_MESSAGE @"No Internet Access."
@@ -36,5 +38,42 @@
     [alertController addAction:[UIAlertAction actionWithTitle:ALERT_ERROR_CANCEL_BUTTON_TITLE style:UIAlertActionStyleCancel handler:nil]];
     [((AppDelegate *)[[UIApplication sharedApplication] delegate]).navigationController presentViewController:alertController animated:YES completion:nil];
 }
+
+#pragma mark - Action Sheet
+
+#define ALERT_IMAGE_TITLE @"Select Image Source"
+#define ALERT_IMAGE_CANCEL_ACTION_TITLE @"Cancel"
+#define ALERT_IMAGE_CAMERA_ACTION_TITLE @"Camera"
+#define ALERT_IMAGE__ACTION_GALLERY_TITLE @"Image Gallery"
+
++ (void)showAlertControllerForImageSelectionWithDelegate:(id<UINavigationControllerDelegate,UIImagePickerControllerDelegate>)delegate{
+    //get navigation controller instance
+    UINavigationController *navigationController = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).navigationController;
+    
+    //setup image picker
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+    [imagePickerController setAllowsEditing:YES];
+    [navigationController setupNavigationBarForPicker:imagePickerController.navigationBar];
+    
+    //add alert action
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:ALERT_IMAGE_TITLE message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertController addAction:[UIAlertAction actionWithTitle:ALERT_IMAGE_CANCEL_ACTION_TITLE style:UIAlertActionStyleCancel handler:nil]];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        [alertController addAction:[UIAlertAction actionWithTitle:ALERT_IMAGE_CAMERA_ACTION_TITLE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [imagePickerController setSourceType: UIImagePickerControllerSourceTypeCamera];
+            [navigationController.topViewController presentViewController:imagePickerController animated:YES completion:nil];
+            [imagePickerController setDelegate:delegate];
+        }]];
+    }
+    [alertController addAction:[UIAlertAction actionWithTitle:ALERT_IMAGE__ACTION_GALLERY_TITLE style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [imagePickerController setSourceType: UIImagePickerControllerSourceTypePhotoLibrary];
+        [navigationController setupNavigationBarForPicker:imagePickerController.navigationBar];
+        [navigationController.topViewController presentViewController:imagePickerController animated:YES completion:nil];
+        [imagePickerController setDelegate:delegate];
+    }]];
+    //present alert
+    [navigationController presentViewController:alertController animated:YES completion:nil];
+}
+
 
 @end
