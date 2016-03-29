@@ -1,6 +1,5 @@
 //
 //  UIView+AppLocalNotification.m
-//  Pronto
 //
 //  Created by Vineet Choudhary
 //  Copyright © Vineet Choudhary. All rights reserved.
