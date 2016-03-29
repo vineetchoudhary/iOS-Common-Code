@@ -15,6 +15,8 @@
 @property(nonatomic,readonly) NSString *authTokenForServerRequest;
 @property(nonatomic,getter=deviceId) NSString *deviceId;
 @property(nonatomic,getter=deviceToken) NSString *deviceToken;
+@property(nonatomic,getter=isAppOpenFirstTime) BOOL appOpenFirstTime;
+@property(nonatomic,getter=isQuickTourCompleted) BOOL quickTourCompleted;
 
 -(void)clearUserDefault;
 @end
