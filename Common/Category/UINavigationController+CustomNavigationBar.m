@@ -256,4 +256,13 @@
     [self.revealViewController setRearViewController:rearViewController];
 }
 
+#pragma mark - Custom navigation bar for picker
+
+-(void)setupNavigationBarForPicker:(UINavigationBar *)navigationBar{
+    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont systemFontOfSize:21],NSFontAttributeName, nil];
+    [navigationBar setTintColor: [UIColor whiteColor]];
+    [navigationBar setTitleTextAttributes: textAttributes];
+    [navigationBar setBarTintColor: self.navigationBar.backgroundColor];
+}
+
 @end

@@ -54,4 +54,6 @@ typedef enum : NSUInteger {
 -(void)setDrawerFrontViewController:(id)frontViewController andAnimated:(BOOL)animated;
 -(void)setDrawerFrontViewController:(id)frontViewController andDrawerRearViewController:(id)rearViewController andAnimated:(BOOL)animated;
 
+-(void)setupNavigationBarForPicker:(UINavigationBar *)navigationBar;
+
 @end
